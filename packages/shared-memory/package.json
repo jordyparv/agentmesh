@@ -1,0 +1,8 @@
+{
+  "name": "@agentmesh/shared-memory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@agentmesh/contracts": "workspace:*", "@agentmesh/database": "workspace:*", "@agentmesh/observability": "workspace:*", "drizzle-orm": "^0.45.4", "picomatch": "^4.0.2" }
+}

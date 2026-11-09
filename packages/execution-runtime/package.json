@@ -1,0 +1,8 @@
+{
+  "name": "@agentmesh/execution-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@agentmesh/contracts": "workspace:*", "@agentmesh/observability": "workspace:*" }
+}

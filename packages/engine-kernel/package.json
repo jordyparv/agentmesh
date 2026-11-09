@@ -1,0 +1,20 @@
+{
+  "name": "@agentmesh/engine-kernel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@agentmesh/contracts": "workspace:*",
+    "@agentmesh/database": "workspace:*",
+    "@agentmesh/execution-runtime": "workspace:*",
+    "@agentmesh/workspace-manager": "workspace:*",
+    "@agentmesh/validation-engine": "workspace:*",
+    "@agentmesh/observability": "workspace:*",
+    "drizzle-orm": "^0.45.4",
+    "pg": "^8.23.1",
+    "@agentmesh/shared-memory": "workspace:*"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@agentmesh/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./build": "./src/build.ts"
+  },
+  "bin": {
+    "agentmesh-mcp": "./dist/agentmesh-mcp.mjs"
+  },
+  "dependencies": {
+    "@agentmesh/contracts": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7",
+    "esbuild": "*"
+  },
+  "scripts": {
+    "build": "tsx src/build.ts"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Bugfix: reproduce, fix, review",
+  "description": "Fix a bug with a regression test; on failure, a diagnosis task runs instead of a silent stop.",
+  "graph": {
+    "nodes": [
+      { "id": "fix", "type": "task", "label": "Fix: {{input.goal}}", "kind": "implement", "requiredCapabilities": ["debug"], "description": "Reproduce and fix the bug, adding a regression test.\n\nBug report:\n{{input.goal}}", "retry": { "maxAttempts": 2 }, "position": { "x": 200, "y": 0 } },
+      { "id": "review", "type": "task", "label": "Review fix", "kind": "review", "requiredCapabilities": ["review"], "description": "Review the fix and the regression test.", "position": { "x": 100, "y": 120 } },
+      { "id": "diagnose", "type": "task", "label": "Diagnose failed fix", "kind": "review", "requiredCapabilities": ["review"], "description": "The automated fix failed. Diagnose why and publish findings to shared knowledge.\n\nBug report:\n{{input.goal}}", "position": { "x": 320, "y": 120 } },
+      { "id": "approval", "type": "approval", "label": "Human approval", "position": { "x": 100, "y": 240 } }
+    ],
+    "edges": [
+      { "id": "e1", "source": "fix", "target": "review" },
+      { "id": "e2", "source": "fix", "target": "diagnose", "condition": "failure" },
+      { "id": "e3", "source": "review", "target": "approval" }
+    ]
+  }
+}

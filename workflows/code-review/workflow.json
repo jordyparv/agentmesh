@@ -1,0 +1,10 @@
+{
+  "name": "Code review",
+  "description": "Independent read-only review of the default branch focused on the given goal; findings go to shared knowledge.",
+  "graph": {
+    "nodes": [
+      { "id": "review", "type": "task", "label": "Review: {{input.goal}}", "kind": "review", "requiredCapabilities": ["review"], "description": "Review the repository with this focus:\n{{input.goal}}\nReport findings with task_reportFinding / knowledge_publish including evidence.", "position": { "x": 0, "y": 0 } }
+    ],
+    "edges": []
+  }
+}

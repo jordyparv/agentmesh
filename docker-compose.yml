@@ -1,0 +1,18 @@
+# Production-like local infrastructure. Dev/test default to embedded PGlite (see docs/ai/DECISIONS.md, ADR-002).
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: agentmesh
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-agentmesh-dev-only}
+      POSTGRES_DB: agentmesh
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentmesh"]
+      interval: 5s
+      retries: 10
+volumes:
+  pgdata:

@@ -1,0 +1,14 @@
+{
+  "name": "@agentmesh/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@agentmesh/api": "workspace:*",
+    "@agentmesh/database": "workspace:*",
+    "@agentmesh/engine-kernel": "workspace:*",
+    "@agentmesh/execution-runtime": "workspace:*",
+    "@agentmesh/observability": "workspace:*",
+    "@agentmesh/mcp-server": "workspace:*"
+  }
+}

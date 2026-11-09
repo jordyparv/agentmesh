@@ -1,0 +1,26 @@
+{
+  "name": "Engineering: plan, implement, test, review, approve",
+  "description": "Claude plans and reviews, Codex implements and tests, Antigravity runs visual QA (assisted when unattended mode is unavailable); a human approves the merge.",
+  "graph": {
+    "nodes": [
+      { "id": "start", "type": "start", "label": "Feature request", "position": { "x": 250, "y": 0 } },
+      { "id": "plan", "type": "task", "label": "Plan: {{input.goal}}", "kind": "plan", "requiredCapabilities": ["plan", "architecture"], "description": "Produce an implementation plan for:\n{{input.goal}}\nList concrete tasks with file scopes and acceptance criteria.", "position": { "x": 250, "y": 100 } },
+      { "id": "implement", "type": "task", "label": "Implement: {{input.goal}}", "kind": "implement", "requiredCapabilities": ["implement"], "description": "Implement the goal following the plan from the upstream planning task.\n\nGoal:\n{{input.goal}}", "retry": { "maxAttempts": 2 }, "position": { "x": 250, "y": 200 } },
+      { "id": "tests", "type": "task", "label": "Automated tests", "kind": "test", "requiredCapabilities": ["test"], "description": "Add or update automated tests covering:\n{{input.goal}}", "position": { "x": 250, "y": 300 } },
+      { "id": "review", "type": "task", "label": "Code review", "kind": "review", "requiredCapabilities": ["review"], "description": "Review the implementation for correctness, security and maintainability.", "position": { "x": 100, "y": 400 } },
+      { "id": "visual", "type": "task", "label": "Visual QA", "kind": "review", "requiredCapabilities": ["visual-qa"], "description": "Verify the UI visually for regressions.", "position": { "x": 400, "y": 400 } },
+      { "id": "approval", "type": "approval", "label": "Human approval", "position": { "x": 250, "y": 500 } },
+      { "id": "merge", "type": "end", "label": "Merge", "position": { "x": 250, "y": 600 } }
+    ],
+    "edges": [
+      { "id": "e1", "source": "start", "target": "plan" },
+      { "id": "e2", "source": "plan", "target": "implement" },
+      { "id": "e3", "source": "implement", "target": "tests" },
+      { "id": "e4", "source": "tests", "target": "review" },
+      { "id": "e5", "source": "tests", "target": "visual" },
+      { "id": "e6", "source": "review", "target": "approval" },
+      { "id": "e7", "source": "visual", "target": "approval" },
+      { "id": "e8", "source": "approval", "target": "merge" }
+    ]
+  }
+}

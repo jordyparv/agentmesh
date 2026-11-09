@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* shadcn/ui-style design tokens: neutral surfaces, one accent, semantic status colors. */
+:root {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.2 0.005 260);
+  --muted: oklch(0.965 0.002 260);
+  --muted-foreground: oklch(0.5 0.01 260);
+  --card: oklch(1 0 0);
+  --border: oklch(0.91 0.004 260);
+  --input: oklch(0.89 0.004 260);
+  --primary: oklch(0.32 0.03 260);
+  --primary-foreground: oklch(0.98 0 0);
+  --accent: oklch(0.955 0.006 260);
+  --ring: oklch(0.6 0.08 260);
+  --success: oklch(0.55 0.13 150);
+  --warning: oklch(0.68 0.14 75);
+  --danger: oklch(0.56 0.19 25);
+  --info: oklch(0.55 0.13 250);
+}
+.dark {
+  --background: oklch(0.17 0.006 260);
+  --foreground: oklch(0.94 0.003 260);
+  --muted: oklch(0.22 0.006 260);
+  --muted-foreground: oklch(0.68 0.01 260);
+  --card: oklch(0.2 0.006 260);
+  --border: oklch(0.29 0.008 260);
+  --input: oklch(0.33 0.008 260);
+  --primary: oklch(0.9 0.01 260);
+  --primary-foreground: oklch(0.2 0.005 260);
+  --accent: oklch(0.26 0.008 260);
+  --ring: oklch(0.65 0.08 260);
+  --success: oklch(0.7 0.14 150);
+  --warning: oklch(0.78 0.14 75);
+  --danger: oklch(0.68 0.18 25);
+  --info: oklch(0.7 0.12 250);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html { color-scheme: light; }
+  html.dark { color-scheme: dark; }
+  body { background: var(--background); color: var(--foreground); font-feature-settings: "cv11", "ss01"; }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+}
+
+/* React Flow theming */
+.react-flow { --xy-background-color: var(--background); --xy-node-border-radius: 6px; --xy-edge-stroke: var(--muted-foreground); --xy-minimap-background-color: var(--card); --xy-controls-button-background-color: var(--card); --xy-controls-button-color: var(--foreground); --xy-controls-button-border-color: var(--border); }

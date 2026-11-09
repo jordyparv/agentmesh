@@ -1,0 +1,10 @@
+{
+  "name": "Visual QA",
+  "description": "Visual verification by a browser-capable agent (Antigravity in assisted mode when unattended execution is unavailable). Deterministic browser checks run as Playwright validation commands.",
+  "graph": {
+    "nodes": [
+      { "id": "visual", "type": "task", "label": "Visual QA: {{input.goal}}", "kind": "review", "requiredCapabilities": ["visual-qa"], "description": "Check the UI for visual regressions:\n{{input.goal}}", "position": { "x": 0, "y": 0 } }
+    ],
+    "edges": []
+  }
+}
